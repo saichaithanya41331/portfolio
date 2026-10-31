@@ -1,352 +1,337 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devangam Sai Chaithanya - React Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
 
-<title>Sai Chaithanya & Chandana Wedding Invitation</title>
+    body {
+      background: #f9fafc;
+      color: #333;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      transition: background 0.4s, color 0.4s;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      z-index: 1000;
+      transition: background 0.4s;
+    }
+    nav h2 {
+      color: #007bff;
+      font-weight: 700;
+    }
+    nav ul {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #007bff;
+    }
 
-<style>
-:root{
---accent:#7b3042;
---ink:#253d35;
---muted:#65716b;
---line:#dde3df;
---paper:#ffffff;
---wash:#f3f6f4;
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:'Poppins',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;}
-a{color:inherit;}
-section{padding:64px max(24px,calc((100% - 1040px)/2));}
-.hero{
-min-height: min(820px,92svh);
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:48px 24px;
-color:#fff;
-background:linear-gradient(rgba(20,36,28,.65),rgba(20,36,28,.72)),url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=2000&q=85') center/cover;
-}
-.hero-content{width:100%;max-width:760px;}
-.logo{font-family:'Cinzel',serif;font-size:24px;color:#fff;line-height:1.4;margin-bottom:20px;}
-.save-date{font-family:'Cinzel',serif;font-size:15px;text-transform:uppercase;}
-.subtitle{font-size:13px;margin:16px 0 20px;color:#ebeee9;}
-.couple{font-weight:400;line-height:1.15;}
-.names{display:block;font-family:'Great Vibes',cursive;font-size:76px;}
-.amp{display:block;font-family:'Cinzel',serif;font-size:26px;margin:8px 0;color:#edc6ce;}
-.invite{max-width:550px;margin:24px auto;font-size:14px;}
-.hero-date{font-family:'Cinzel',serif;font-size:18px;}
-.hero-location{font-size:12px;margin-top:8px;}
-.hero .btn{background:#fff;color:var(--ink);border-color:#fff;margin-top:24px;}
-.heading{text-align:center;margin-bottom:32px;}
-.heading h2{font-size:28px;font-weight:500;font-family:'Cinzel',serif;color:var(--ink);line-height:1.4;}
-.heading p{font-size:13px;color:var(--muted);margin-top:10px;}
-.countdowns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px;background:var(--wash);}
-.countdown{min-width:0;}
-.countdown .heading h2{font-size:20px;}
-.count-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;text-align:center;}
-.box{padding:12px 4px;border-top:1px solid var(--line);font-size:11px;color:var(--muted);}
-.box span{display:block;font-family:'Cinzel',serif;font-size:32px;font-variant-numeric:tabular-nums;color:var(--accent);line-height:1.5;}
-.event-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;}
-.card{padding:36px 24px;background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:4px;text-align:center;}
-.card h3{font-family:'Cinzel',serif;font-weight:600;font-size:21px;color:var(--accent);margin-bottom:20px;}
-.card p{font-size:14px;}
-.event-number{display:block;font-family:'Cinzel',serif;font-size:12px;color:var(--muted);margin-bottom:14px;}
-.schedule{background:var(--wash);}
-.timeline{max-width:760px;margin:auto;}
-.timeline-date{font-family:'Cinzel',serif;font-size:17px;color:var(--accent);padding:12px 0;}
-.timeline-date:not(:first-child){margin-top:24px;}
-.timeline-item{display:grid;grid-template-columns:130px minmax(0,1fr);gap:24px;padding:18px 0;border-top:1px solid var(--line);font-size:14px;align-items:baseline;}
-.timeline-item time{font-variant-numeric:tabular-nums;font-weight:500;}
-.venue{text-align:center;}
-.venue h3{font-family:'Cinzel',serif;font-size:24px;font-weight:500;margin-bottom:8px;}
-.venue p{font-size:14px;color:var(--muted);}
-.venue-mark{width:48px;height:48px;display:grid;place-items:center;margin:0 auto 20px;color:var(--accent);border:1px solid var(--line);border-radius:50%;}
-.actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:24px;}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 24px;background:var(--accent);color:#fff;text-decoration:none;border:1px solid var(--accent);border-radius:4px;font-size:13px;font-weight:500;transition:background .2s,transform .2s;}
-.btn svg{width:18px;height:18px;flex-shrink:0;}
-.btn:hover{background:#5f2030;color:#fff;transform:translateY(-2px);}
-.btn.secondary{background:transparent;color:var(--ink);border-color:#abb9b1;}
-.btn.secondary:hover{background:#e6ede8;}
-a:focus-visible{outline:3px solid #b68b27;outline-offset:5px;}
-.contact{text-align:center;background:var(--wash);}
-.phone{font-size:24px;font-weight:500;text-decoration:none;display:inline-block;}
-.contact .heading{margin-bottom:20px;}
-.blessing{text-align:center;}
-.blessing p{font-size:15px;color:var(--muted);}
-footer{background:var(--ink);color:#e7ede9;text-align:center;padding:40px 24px;font-size:12px;}
-footer h2{font-family:'Great Vibes',cursive;font-size:32px;font-weight:400;color:#edc6ce;}
-footer p{margin-top:8px;}
-@media(max-width:640px){
-section{padding:44px 20px;}
-.hero{min-height:0;padding:40px 20px 48px;}
-.names{font-size:54px;}
-.hero-date{font-size:16px;}
-.invite{font-size:13px;max-width:340px;}
-.countdowns,.event-grid{grid-template-columns:minmax(0,1fr);gap:32px;}
-.heading h2{font-size:23px;}
-.countdown .heading{margin-bottom:20px;}
-.card{padding:28px 20px;}
-.timeline-item{grid-template-columns:95px minmax(0,1fr);gap:12px;font-size:13px;}
-.venue h3{font-size:21px;}
-.phone{font-size:22px;}
-}
-@media(max-width:360px){.names{font-size:46px;}.btn{padding:12px 16px;}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.btn{transition:none;}}
-</style>
+    /* Hero */
+    .hero {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(to right, #007bff, #00d4ff);
+      color: white;
+      padding: 0 20px;
+      position: relative;
+      transition: background 0.4s;
+    }
+    .hero h1 {
+      font-size: 3rem;
+    }
+    .hero p {
+      margin: 20px 0;
+      font-size: 1.2rem;
+    }
+    .hero a {
+      padding: 12px 25px;
+      background: white;
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 30px;
+      transition: 0.3s;
+    }
+    .hero a:hover {
+      background: #f1f1f1;
+    }
+
+    /* Dark Mode Toggle Button */
+    .theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    #darkModeBtn {
+      background: white;
+      border: none;
+      font-size: 1.5rem;
+      padding: 8px 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    #darkModeBtn:hover {
+      background: #f1f1f1;
+    }
+    body.dark #darkModeBtn {
+      background: #333;
+      color: #00d4ff;
+    }
+
+    /* Section */
+    section {
+      max-width: 1100px;
+      margin: 80px auto;
+      padding: 0 20px;
+      transition: background 0.4s, color 0.4s;
+    }
+    section h2 {
+      text-align: center;
+      color: #007bff;
+      margin-bottom: 40px;
+      font-size: 2rem;
+      transition: color 0.4s;
+    }
+
+    /* About */
+    .about {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      text-align: center;
+    }
+    .about img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 4px solid #007bff;
+      object-fit: cover;
+    }
+
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+    .project-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 20px;
+      transition: transform 0.3s, background 0.4s, color 0.4s;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+    .project-card h3 {
+      margin-bottom: 10px;
+      color: #007bff;
+      transition: color 0.4s;
+    }
+
+    /* Contact */
+    .contact {
+      text-align: center;
+    }
+    .contact a {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 25px;
+      background: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: 0.3s;
+    }
+    .contact a:hover {
+      background: #0056b3;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #f1f1f1;
+      margin-top: 50px;
+      font-size: 0.9rem;
+      transition: background 0.4s, color 0.4s;
+    }
+
+    /* Dark Mode Styles */
+    body.dark {
+      background: #121212;
+      color: #e4e4e4;
+    }
+    body.dark nav {
+      background: #1e1e1e;
+      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+    }
+    body.dark nav h2 {
+      color: #00d4ff;
+    }
+    body.dark nav ul li a {
+      color: #e4e4e4;
+    }
+    body.dark nav ul li a:hover {
+      color: #00d4ff;
+    }
+    body.dark .hero {
+      background: linear-gradient(to right, #1f1f1f, #333);
+      color: white;
+    }
+    body.dark .hero a {
+      background: #333;
+      color: #00d4ff;
+    }
+    body.dark .hero a:hover {
+      background: #444;
+    }
+    body.dark section h2 {
+      color: #00d4ff;
+    }
+    body.dark .project-card {
+      background: #1e1e1e;
+      box-shadow: 0 4px 12px rgba(255,255,255,0.1);
+    }
+    body.dark .project-card h3 {
+      color: #00d4ff;
+    }
+    body.dark .contact a {
+      background: #00d4ff;
+      color: #121212;
+    }
+    body.dark .contact a:hover {
+      background: #0099cc;
+    }
+    body.dark footer {
+      background: #1e1e1e;
+      color: #aaa;
+    }
+  </style>
 </head>
-
 <body>
 
-<main>
-<section class="hero">
-
-<div class="hero-content">
-
-<div class="logo" aria-label="Sai Chaithanya and Chandana">SC & C</div>
-
-<div class="save-date">Save The Date</div>
-
-<div class="subtitle">for the wedding of</div>
-
-<h1 class="couple"><span class="names">
-Sai Chaithanya
-</span>
-
-<span class="amp">&</span>
-
-<span class="names">
-Chandana
-</span></h1>
-
-<div class="invite">
-We cordially invite you to join us as we begin a new chapter of our lives together and celebrate our wedding.
-</div>
-
-<p class="hero-date">21 & 22 November 2026</p>
-<p class="hero-location">Sri Shiridi Sai Garden's · Dharmavaram</p>
-<a class="btn" href="#events"><i data-lucide="calendar-days" aria-hidden="true"></i>View Celebrations</a>
-</div>
-
-</section>
-
-<section class="countdowns" aria-label="Celebration countdowns">
-<div class="countdown">
-
-<div class="heading">
-<h2>Reception Countdown</h2>
-<p>21 November 2026 · 7:00 PM IST</p>
-</div>
-
-<div class="count-row">
-<div class="box"><span id="rDays">0</span>Days</div>
-<div class="box"><span id="rHours">0</span>Hours</div>
-<div class="box"><span id="rMinutes">0</span>Minutes</div>
-<div class="box"><span id="rSeconds">0</span>Seconds</div>
-</div>
-
-</div>
-<div class="countdown">
-
-<div class="heading">
-<h2>Wedding Countdown</h2>
-<p>22 November 2026 · 9:00 AM IST</p>
-</div>
-
-<div class="count-row">
-<div class="box"><span id="wDays">0</span>Days</div>
-<div class="box"><span id="wHours">0</span>Hours</div>
-<div class="box"><span id="wMinutes">0</span>Minutes</div>
-<div class="box"><span id="wSeconds">0</span>Seconds</div>
-</div>
-
-</div>
-</section>
-
-<section class="events" id="events">
-
-<div class="heading">
-<h2>Event Details</h2>
-<p>Two celebrations. One beautiful beginning.</p>
-</div>
-
-<div class="event-grid">
-
-<div class="card">
-<span class="event-number">01 / THE EVENING</span>
-<h3>Reception</h3>
-
-<p><strong>Date:</strong> 21 November 2026</p>
-<p><strong>Time:</strong> 7:00 PM</p>
-<p><strong>Dinner:</strong> 8:00 PM</p>
-
-<br>
-
-<p>Sri Shiridi Sai Garden's</p>
-<p>(Function Hall)</p>
-<p>Bangalore Road, Dharmavaram</p>
-
-</div>
-
-<div class="card">
-
-<span class="event-number">02 / THE CEREMONY</span>
-<h3>Wedding Ceremony</h3>
-
-<p><strong>Date:</strong> 22 November 2026</p>
-<p><strong>Time:</strong> 9:00 AM - 10:00 AM</p>
-
-<br>
-
-<p>Sri Shiridi Sai Garden's</p>
-<p>(Function Hall)</p>
-<p>Bangalore Road, Dharmavaram</p>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="schedule">
-
-<div class="heading">
-<h2>Wedding Schedule</h2>
-</div>
-
-<div class="timeline">
-
-<h3 class="timeline-date">Saturday, 21 November</h3>
-<div class="timeline-item">
-<time datetime="2026-11-21T19:00:00+05:30">7:00 PM</time><span>Reception Ceremony</span>
-</div>
-
-<div class="timeline-item">
-<time datetime="2026-11-21T20:00:00+05:30">8:00 PM</time><span>Dinner</span>
-</div>
-
-<h3 class="timeline-date">Sunday, 22 November</h3>
-<div class="timeline-item">
-<time datetime="2026-11-22T08:45:00+05:30">8:45 AM</time><span>Tiffin & Refreshments</span>
-</div>
-
-<div class="timeline-item">
-<time datetime="2026-11-22T09:00:00+05:30">9:00 AM</time><span>Wedding Ceremony Begins</span>
-</div>
-
-<div class="timeline-item">
-<time datetime="2026-11-22T10:00:00+05:30">10:00 AM</time><span>Muhurtham Completion</span>
-</div>
-
-<div class="timeline-item">
-<time datetime="2026-11-22T12:00:00+05:30">12:00 PM</time><span>Lunch</span>
-</div>
-
-</div>
-
-</section>
-
-<section class="venue" id="venue">
-
-<div class="heading">
-<h2>Venue</h2>
-</div>
-
-<div class="venue-mark"><i data-lucide="map-pin" aria-hidden="true"></i></div>
-<h3>Sri Shiridi Sai Garden's</h3>
-
-<p>(Function Hall)</p>
-
-<p>Bangalore Road, Dharmavaram</p>
-
-<div class="actions">
-<a class="btn" href="https://maps.app.goo.gl/TMHDHo5Bqytai5dp7" target="_blank" rel="noopener noreferrer"><i data-lucide="navigation" aria-hidden="true"></i>Get Directions</a>
-</div>
-
-</section>
-
-<section class="contact">
-
-<div class="heading">
-<h2>Contact & RSVP</h2>
-</div>
-
-<a class="phone" href="tel:+916281462446" aria-label="Call +91 6281462446">+91 62814 62446</a>
-<div class="actions">
-<a class="btn" href="tel:+916281462446"><i data-lucide="phone" aria-hidden="true"></i>Call Now</a>
-<a class="btn secondary" href="https://wa.me/916281462446?text=Hello%2C%20I%20would%20like%20to%20RSVP%20for%20Sai%20Chaithanya%20and%20Chandana%27s%20wedding." target="_blank" rel="noopener noreferrer"><i data-lucide="message-circle" aria-hidden="true"></i>RSVP on WhatsApp</a>
-</div>
-
-</section>
-
-<section class="blessing">
-
-<div class="heading">
-<h2>Your Presence Is Our Blessing</h2>
-</div>
-
-<p>
-Your gracious presence and blessings are warmly invited.
-</p>
-
-</section>
-
-</main>
-<footer>
-
-<h2>With Love</h2>
-<p>Sai Chaithanya & Chandana</p>
-<p>21 & 22 November 2026 · Dharmavaram</p>
-
-</footer>
-
-<script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
-<script>
-
-if (window.lucide) lucide.createIcons();
-
-const receptionDate =
-new Date("2026-11-21T19:00:00+05:30").getTime();
-
-const weddingDate =
-new Date("2026-11-22T09:00:00+05:30").getTime();
-
-function update(target,prefix){
-
-const now=new Date().getTime();
-let distance=target-now;
-
-if(distance<0){
-distance=0;
-}
-
-const days=Math.floor(distance/(1000*60*60*24));
-const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
-const seconds=Math.floor((distance%(1000*60))/1000);
-
-document.getElementById(prefix+'Days').textContent=days;
-document.getElementById(prefix+'Hours').textContent=String(hours).padStart(2,'0');
-document.getElementById(prefix+'Minutes').textContent=String(minutes).padStart(2,'0');
-document.getElementById(prefix+'Seconds').textContent=String(seconds).padStart(2,'0');
-
-}
-
-update(receptionDate,'r');
-update(weddingDate,'w');
-setInterval(function(){
-
-update(receptionDate,'r');
-update(weddingDate,'w');
-
-},1000);
-
-</script>
+  <!-- Navbar -->
+  <nav>
+    <h2>DSC</h2>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="theme-toggle">
+      <button id="darkModeBtn">🌙</button>
+    </div>
+    <div>
+      <h1>Hi, I'm Devangam Sai Chaithanya</h1>
+      <p>A React Developer passionate about building modern, user-friendly web applications 🚀</p>
+      <a href="#projects">View My Work</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="about">
+      <img src="assets\profile.jpeg" alt="Profile Photo">
+      <p>
+        I'm a React Developer with 3+ years of experience creating scalable, responsive, and high-performance applications.  
+        I specialize in React, Redux, TypeScript, and modern UI frameworks. My goal is to craft applications that not only work flawlessly but also provide an enjoyable user experience.
+      </p>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <h3>Cargo Portal Services</h3>
+        <p>Developed a global logistics solution using React, Redux, and TypeScript, enhancing performance and UI accessibility.</p>
+      </div>
+      <div class="project-card">
+        <h3>Portfolio Website</h3>
+        <p>A modern personal portfolio site built with HTML, CSS, and JS — showcasing my skills, projects, and contact details.</p>
+      </div>
+      <div class="project-card">
+        <h3>Product Dashboard</h3>
+        <p>Interactive dashboard template with login, product display, and analytics, built for scalable enterprise apps.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <div class="contact">
+      <a href="mailto:saichaithanya41@gmail.com">📧 Email Me</a>
+      <a href="tel:+916281462446">📞 Call Me</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Devangam Sai Chaithanya. Built with ❤️ using HTML & CSS.
+  </footer>
+
+  <script>
+    const darkModeBtn = document.getElementById('darkModeBtn');
+    const body = document.body;
+
+    // Load saved mode
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark');
+      darkModeBtn.textContent = "☀️";
+    }
+
+    darkModeBtn.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      if (body.classList.contains('dark')) {
+        darkModeBtn.textContent = "☀️";
+        localStorage.setItem('theme', 'dark');
+      } else {
+        darkModeBtn.textContent = "🌙";
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  </script>
 
 </body>
 </html>
